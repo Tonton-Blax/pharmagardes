@@ -1,0 +1,23 @@
+{
+  "timestamp": {
+    "string": "02/08/2020 à 22:30:06",
+    "raw": 1596400206309
+  },
+  "pharmacies": [
+    {
+      "name": "COMMISSARIAT",
+      "adresse": "201 rue Jean Richepin 95120 ERMONT",
+      "horaire": "pour des raisons de sécurité, la pharmacie de garde est joignable par le commissariat de ermont, 201 rue jean richepin. muni d'une ordonnance médicale et d'une pièce d'identité."
+    },
+    {
+      "name": "POLICE MUNICIPALE",
+      "adresse": "201 rue Jean Richepin 95120 ERMONT",
+      "horaire": "pour des raisons de sécurité, la pharmacie de garde est joignable par l'hotel de police, situé, au 201, rue jean richepin à ermont, ou par le commissariat de herblay, 3 boulevard du 11 novembre 1918 présentez-vous muni d'une ordonnance et d'une pièce"
+    },
+    {
+      "name": "COMMISSARIAT",
+      "adresse": "4 rue de la Croix des Maheux 95000 CERGY",
+      "horaire": "pour des raisons de sécurité, la pharmacie de garde est joignable par l'hotel de police de cergy, 4 rue de la croix des maheux. muni d'une ordonnance médicale et d'une pièce d'identité."
+    }
+  ]
+}
