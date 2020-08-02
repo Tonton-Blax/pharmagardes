@@ -7,12 +7,13 @@ const puppeteer = require("puppeteer");
 
 const app = fastify();
 
+
 let cronTimestamp;
 let jsonTimestamp;
 
-let pharmacies = JSON.parse(fs.readFileSync('pharmasgarde.json', 'utf8'));
+ let pharmacies = JSON.parse(fs.readFileSync('pharmasgarde.json', 'utf8')); 
 
-cron.schedule("*/1 * * * *", function() {
+cron.schedule("0 4 * * *", function() {
     console.log("---------------------");
     console.log("Running Cron Job");
 
@@ -103,5 +104,6 @@ app.get("/pharma", async () => {
       Message: getPharmas()
     }
   })
+  
 
 app.listen(3128);
