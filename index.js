@@ -83,7 +83,7 @@ let pharmacies = [];
 
 pharmacies = read('pharmasgarde.json');
 
-cron.schedule("*/1 * * * *", function() {
+cron.schedule("0 4 * * *", function() {
     console.log("---------------------");
     console.log("TACHE CRON EN COURS");
 
