@@ -1,9 +1,9 @@
 "use strict";
 
-const cron = require("node-cron");
-const fastify  = require("fastify");
-const fs = require('fs').promises;
-const puppeteer = require("puppeteer");
+import cron from "node-cron";
+import fastify  from "fastify";
+import { promises as fs } from 'fs';
+import puppeteer from "puppeteer";
 
 const app = fastify();
 
