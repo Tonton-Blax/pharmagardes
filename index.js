@@ -2,33 +2,10 @@
 
 const cron = require("node-cron");
 const fastify  = require("fastify");
-const fs = require("fs");
+const fs = require('fs').promises;
 const puppeteer = require("puppeteer");
 
 const app = fastify();
-
-
-let cronTimestamp;
-let jsonTimestamp;
-
- let pharmacies = JSON.parse(fs.readFileSync('pharmasgarde.json', 'utf8')); 
-
-cron.schedule("0 4 * * *", function() {
-    console.log("---------------------");
-    console.log("Running Cron Job");
-
-    get3237().then(text => {
-        let data = JSON.stringify(text, null, 2);
-        
-        fs.writeFile('pharmasgarde.json', data, function (err) {
-            if (err) return console.log(err);
-            console.log('Fichier écrit');
-        });
-
-        cronTimestamp = new Date (Date.now());
-
-    });
-});
 
 async function get3237 () {
     
@@ -79,29 +56,60 @@ async function get3237 () {
     await browser.close();
     return text;
 }
+async function read (file) {
+    try {
+        const data = await fs.readFile(file);
+        return await JSON.parse(data);
+    } 
+    catch (error) {
+        console.log(error)
+    }
+}
+
+async function write (file, data) {
+    try {
+        await fs.writeFile(file, JSON.stringify(data, null, 2));
+        console.log("Fichier écrit");
+    } 
+    catch (error) {
+        console.log(error)
+    }
+}
 
 
+let cronTimestamp;
+let jsonTimestamp;
+let pharmacies = [];
 
-fs.readFile('pharmasgarde.json', 'utf8', function (err, data) {
-    if (err) throw err;
-    pharmacies =  JSON.parse(data);
+pharmacies = read('pharmasgarde.json');
+
+cron.schedule("*/1 * * * *", function() {
+    console.log("---------------------");
+    console.log("TACHE CRON EN COURS");
+
+    get3237().then(text => {
+        
+        write('pharmasgarde.json', text);
+        cronTimestamp = new Date (Date.now());
+    });
 });
 
-function getPharmas () {
+async function getPharmas () {
     
-    jsonTimestamp = new Date(pharmacies.timestamp.raw);
-    if (cronTimestamp && cronTimestamp < jsonTimestamp) {
+    const ù = await pharmacies;
+    jsonTimestamp = new Date(ù.timestamp.raw);
+    
+    //console.log("cronTimestamp : ", cronTimestamp, 'jsonTimestamp :', jsonTimestamp)
+    if (cronTimestamp && cronTimestamp > jsonTimestamp) {
         console.log("plus récent")
-        pharmacies = JSON.parse(fs.readFileSync('pharmasgarde.json', 'utf8'));
+        pharmacies = read('pharmasgarde.json');
     }
     return pharmacies;
 }
 
-
-
 app.get("/pharma", async () => {
     return {
-      Message: getPharmas()
+      Message: await getPharmas()
     }
   })
   

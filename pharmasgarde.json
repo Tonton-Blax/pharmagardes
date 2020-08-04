@@ -1,14 +1,9 @@
 {
   "timestamp": {
-    "string": "02/08/2020 à 23:12:04",
-    "raw": 1596402724633
+    "string": "04/08/2020 à 23:27:02",
+    "raw": 1596576422256
   },
   "pharmacies": [
-    {
-      "name": "COMMISSARIAT",
-      "adresse": "201 rue Jean Richepin 95120 ERMONT",
-      "horaire": "pour des raisons de sécurité, la pharmacie de garde est joignable par le commissariat de ermont, 201 rue jean richepin. muni d'une ordonnance médicale et d'une pièce d'identité."
-    },
     {
       "name": "POLICE MUNICIPALE",
       "adresse": "201 rue Jean Richepin 95120 ERMONT",
@@ -16,8 +11,13 @@
     },
     {
       "name": "COMMISSARIAT",
-      "adresse": "4 rue de la Croix des Maheux 95000 CERGY",
-      "horaire": "pour des raisons de sécurité, la pharmacie de garde est joignable par l'hotel de police de cergy, 4 rue de la croix des maheux. muni d'une ordonnance médicale et d'une pièce d'identité."
+      "adresse": "201 rue Jean Richepin 95120 ERMONT",
+      "horaire": "pour des raisons de sécurité, la pharmacie de garde est joignable par le commissariat de ermont, 201 rue jean richepin. muni d'une ordonnance médicale et d'une pièce d'identité."
+    },
+    {
+      "name": "COMMISSARIAT",
+      "adresse": "20 rue Malleville 95800 ENGHIEN LES BAINS",
+      "horaire": "pour des raisons de sécurité, la pharmacie de garde est joignable par le commissariat de enghien, 20 rue malleville. ou par le commissariat de montmorency, 6 rue de valmy. muni d'une ordonnance médicale et d'une pièce d'identité."
     }
   ]
 }
